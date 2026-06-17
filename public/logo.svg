@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">Lockout Crew</title>
+  <rect width="96" height="96" rx="18" fill="#0b0f14"/>
+  <path d="M48 10 77 20v24c0 18-11 33-29 42C30 77 19 62 19 44V20l29-10Z" fill="#d7ff35"/>
+  <path d="M48 18 68 25v18c0 13-7 24-20 31-13-7-20-18-20-31V25l20-7Z" fill="#111827"/>
+  <path d="M36 45h24v18H36V45Z" fill="#f7f3e8"/>
+  <path d="M41 45v-7a7 7 0 0 1 14 0v7h-5v-7a2 2 0 0 0-4 0v7h-5Z" fill="#f7f3e8"/>
+  <circle cx="48" cy="54" r="3" fill="#1d4ed8"/>
+</svg>
