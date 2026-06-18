@@ -25,7 +25,7 @@ const homeFaqs = [
   },
   {
     q: "Can I call if I am not sure which locksmith page fits?",
-    a: "Yes. Use the call button and describe the locked door, vehicle, key, fob, business, or roadside situation. The first call can sort urgency, location, access constraints, and the likely service path.",
+    a: "Yes. Use the call button and describe the locked door, vehicle, key, fob, business, or roadside situation. We can sort urgency, location, access needs, and the right help.",
   },
   {
     q: "Why are there separate city and service pages?",
@@ -82,7 +82,7 @@ export default function HomePage() {
               Lockouts get stressful quickly: a running car in a parking lot, keys on the seat, a storefront that will
               not open, a tenant waiting outside, or a fob that stops responding at the worst moment. Lockout Crew keeps
               the service path direct so callers can explain the lock, the location, the urgency, and the access issue
-              without sorting through generic pages first.
+              without sorting through generic options first.
             </p>
             <div className="crew-actions">
               <a className="crew-call crew-call-large" href={`tel:${PHONE_E164}`}>

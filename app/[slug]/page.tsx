@@ -101,7 +101,7 @@ function RelatedLinks({ page }: { page: Page }) {
   const siblingLinks = sameCityPages(page);
   const supportLinks = supportCityLinks(page, 6);
 
-  if (page.PageType === "Service Pillar") {
+  if (page.PageSlug === pillar.PageSlug) {
     const links = cityLinks.length ? cityLinks : supportLinks;
     return (
       <section className="crew-detail">
@@ -192,7 +192,7 @@ export default async function DynamicSeoPage({ params }: Props) {
       <section className="crew-page-hero">
         <div className="crew-shell crew-page-hero-grid">
           <div>
-            <p className="crew-kicker">{page.PageType}</p>
+            <p className="crew-kicker">Locksmith help</p>
             <h1>{buildH1(page)}</h1>
             <p>{introText(page)}</p>
             <div className="crew-actions">
@@ -233,20 +233,20 @@ export default async function DynamicSeoPage({ params }: Props) {
             </div>
             <div className="crew-card-grid crew-card-grid-3">
               <article className="crew-card">
-                <h3>Routes</h3>
+                <h3>Travel</h3>
                 <p>
                   Calls may involve travel around {facts.routes[0]} or {facts.routes[1]}, where timing, parking, and
                   roadside access can shape arrival.
                 </p>
               </article>
               <article className="crew-card">
-                <h3>Common Areas</h3>
+                <h3>Nearby spots</h3>
                 <p>
                   Service may involve parking and access near {facts.places[0]} and {facts.places[1]}.
                 </p>
               </article>
               <article className="crew-card">
-                <h3>Field Note</h3>
+                <h3>Local conditions</h3>
                 <p>{facts.note} can affect how quickly a lockout, key, or vehicle access problem is handled.</p>
               </article>
             </div>
@@ -261,9 +261,9 @@ export default async function DynamicSeoPage({ params }: Props) {
             <h2>Help us route the right service</h2>
           </div>
           <ul className="crew-checks">
-            <li>Whether the issue involves a car, home, business, key, fob, lock cylinder, or roadside situation.</li>
-            <li>Whether anyone is stranded, unsafe, waiting outside, or blocked from getting back to normal.</li>
-            <li>Which access details matter before entry, key cutting, fob replacement, or lock service begins.</li>
+            <li>Whether the issue involves a car, home, business, key, fob, lock, or roadside situation.</li>
+            <li>Whether anyone is stranded, unsafe, waiting outside, or blocked from getting back inside.</li>
+            <li>Any details that help us bring the right solution for entry, key cutting, fob replacement, or repair.</li>
             <li>Any location details like parkades, lots, curbside timing, gates, or building access.</li>
           </ul>
         </div>

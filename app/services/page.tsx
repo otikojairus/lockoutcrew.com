@@ -30,13 +30,13 @@ const serviceFaqs = [
 ];
 
 export const metadata: Metadata = {
-  title: `Locksmith Services Index | ${SITE_NAME}`,
+  title: `Locksmith Services | ${SITE_NAME}`,
   description:
-    "Browse every Lockout Crew locksmith, lockout, roadside, key cutting, vehicle, commercial, and city page. Call for direct intake.",
+    "Browse locksmith help for lockouts, roadside problems, key cutting, vehicle access, commercial locks, and local service needs.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: `${SITE_NAME} Service Index`,
-    description: "Complete locksmith and lockout page index for Canada-wide and city-specific service routes.",
+    title: `${SITE_NAME} Locksmith Services`,
+    description: "Locksmith help for Canada-wide and local service needs.",
     url: absoluteUrl("/services"),
   },
 };
@@ -69,7 +69,7 @@ export default function ServicesPage() {
 
       <section className="crew-section">
         <div className="crew-shell">
-          <h2>Service Pillars</h2>
+          <h2>Popular services</h2>
           <div className="crew-card-grid crew-card-grid-4">
             {SERVICE_PILLARS.map((page) => (
               <Link className="crew-card crew-card-link" href={toPath(page.PageSlug)} key={page.PageSlug}>
@@ -83,7 +83,7 @@ export default function ServicesPage() {
 
       <section className="crew-section crew-section-dark">
         <div className="crew-shell">
-          <h2>City Pages</h2>
+          <h2>City help</h2>
           <div className="crew-city-grid">
             {CITY_PAGES.map((page) => (
               <Link className="crew-city-tile" href={toPath(page.PageSlug)} key={page.PageSlug}>
@@ -96,7 +96,7 @@ export default function ServicesPage() {
 
       <section className="crew-section">
         <div className="crew-shell">
-          <h2>Emergency, Near-Me and Service Pages</h2>
+          <h2>Urgent help</h2>
           <div className="crew-chip-grid">
             {SUPPORT_PAGES.map((page) => (
               <Link className="crew-chip" href={toPath(page.PageSlug)} key={page.PageSlug}>
@@ -109,7 +109,7 @@ export default function ServicesPage() {
 
       <section className="crew-section crew-index-band">
         <div className="crew-shell">
-          <h2>All Pages</h2>
+          <h2>All services</h2>
           <div className="crew-index-list">
             {SEO_PAGES.map((page) => (
               <Link href={toPath(page.PageSlug)} key={page.PageSlug}>
