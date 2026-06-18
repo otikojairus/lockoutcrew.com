@@ -35,7 +35,7 @@ export function bySlug(slug: string) {
 }
 
 export function isCityPage(page: SeoPage) {
-  return page.PageSlug.includes("/city/") && !page.TargetArea.includes("National");
+  return page.PageType === "City Service Page" && !page.TargetArea.includes("National");
 }
 
 export function cityFromTargetArea(targetArea: string) {

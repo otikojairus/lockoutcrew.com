@@ -106,8 +106,8 @@ function RelatedLinks({ page }: { page: Page }) {
     return (
       <section className="crew-detail">
         <div className="crew-section-head">
-          <p className="crew-kicker">Local routing</p>
-          <h2>City Pages For This Service</h2>
+          <p className="crew-kicker">Areas we serve</p>
+          <h2>Nearby locations</h2>
         </div>
         <div className="crew-city-grid">
           {links.map((item) => (
@@ -124,28 +124,28 @@ function RelatedLinks({ page }: { page: Page }) {
     return (
       <section className="crew-detail">
         <div className="crew-section-head">
-          <p className="crew-kicker">Nearby decisions</p>
-          <h2>Related Local Routes</h2>
+          <p className="crew-kicker">Areas we serve</p>
+          <h2>Nearby locations</h2>
         </div>
         <div className="crew-link-stack">
           <Link className="crew-row-link" href={toPath(pillar.PageSlug)}>
-            <span>Parent service</span>
+            <span>Main service</span>
             <strong>{pageListLabel(pillar)}</strong>
-            <p>Open the broader service route for this locksmith category.</p>
+            <p>Open the main service for this issue.</p>
           </Link>
           {siblingLinks.slice(0, 5).map((item) => (
             <Link className="crew-row-link" key={item.PageSlug} href={toPath(item.PageSlug)}>
-              <span>Same city</span>
+              <span>Nearby area</span>
               <strong>{linkLabel(item)}</strong>
-              <p>Compare another local route in {cityFromTargetArea(item.TargetArea)}.</p>
+              <p>See another nearby location in {cityFromTargetArea(item.TargetArea)}.</p>
             </Link>
           ))}
           {siblingLinks.length === 0 &&
             supportLinks.slice(0, 3).map((item) => (
               <Link className="crew-row-link" key={item.PageSlug} href={toPath(item.PageSlug)}>
-                <span>Related city</span>
+                <span>Nearby area</span>
                 <strong>{linkLabel(item)}</strong>
-                <p>Review a nearby route with similar locksmith context.</p>
+                <p>See another nearby location with similar service needs.</p>
               </Link>
             ))}
         </div>
@@ -156,20 +156,20 @@ function RelatedLinks({ page }: { page: Page }) {
   return (
     <section className="crew-detail">
       <div className="crew-section-head">
-        <p className="crew-kicker">Keep moving</p>
-        <h2>Relevant Service and City Pages</h2>
+        <p className="crew-kicker">Areas we serve</p>
+        <h2>Nearby locations</h2>
       </div>
       <div className="crew-link-stack">
         <Link className="crew-row-link" href={toPath(pillar.PageSlug)}>
-          <span>Recommended hub</span>
+          <span>Main service</span>
           <strong>{pageListLabel(pillar)}</strong>
-          <p>Use this hub for the broader service path behind the issue.</p>
+          <p>Open the main service for this issue.</p>
         </Link>
         {supportLinks.slice(0, 6).map((item) => (
           <Link className="crew-row-link" key={item.PageSlug} href={toPath(item.PageSlug)}>
-            <span>City route</span>
+            <span>Nearby area</span>
             <strong>{linkLabel(item)}</strong>
-            <p>Open a local version of this service path.</p>
+            <p>Open a nearby location with the same kind of help.</p>
           </Link>
         ))}
       </div>

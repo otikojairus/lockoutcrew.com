@@ -6,10 +6,10 @@ import {
   SEO_PAGES,
   SERVICE_PILLARS,
   SITE_NAME,
-  SUPPORT_PAGES,
   absoluteUrl,
   linkLabel,
   pageListLabel,
+  provinceFromTargetArea,
   toPath,
 } from "@/lib/site-data";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -83,40 +83,25 @@ export default function ServicesPage() {
 
       <section className="crew-section crew-section-dark">
         <div className="crew-shell">
-          <h2>City help</h2>
-          <div className="crew-city-grid">
-            {CITY_PAGES.map((page) => (
-              <Link className="crew-city-tile" href={toPath(page.PageSlug)} key={page.PageSlug}>
-                {linkLabel(page)}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="crew-section">
-        <div className="crew-shell">
-          <h2>Urgent help</h2>
-          <div className="crew-chip-grid">
-            {SUPPORT_PAGES.map((page) => (
-              <Link className="crew-chip" href={toPath(page.PageSlug)} key={page.PageSlug}>
-                {linkLabel(page)}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="crew-section crew-index-band">
-        <div className="crew-shell">
-          <h2>All services</h2>
-          <div className="crew-index-list">
-            {SEO_PAGES.map((page) => (
-              <Link href={toPath(page.PageSlug)} key={page.PageSlug}>
-                {pageListLabel(page)}
-              </Link>
-            ))}
-          </div>
+          <h2>Areas we serve</h2>
+          {Object.entries(
+            CITY_PAGES.reduce<Record<string, typeof CITY_PAGES>>((groups, page) => {
+              const area = provinceFromTargetArea(page.TargetArea);
+              (groups[area] ||= []).push(page);
+              return groups;
+            }, {}),
+          ).map(([area, pages]) => (
+            <div key={area} style={{ marginTop: "1.5rem" }}>
+              <h3 style={{ marginBottom: "0.75rem" }}>{area}</h3>
+              <div className="crew-city-grid">
+                {pages.map((page) => (
+                  <Link className="crew-city-tile" href={toPath(page.PageSlug)} key={page.PageSlug}>
+                    {linkLabel(page)}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
