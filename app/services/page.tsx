@@ -16,16 +16,16 @@ import { breadcrumbSchema } from "@/lib/schema";
 
 const serviceFaqs = [
   {
-    q: "Does this index include every generated locksmith page?",
-    a: "Yes. Service, near-me, city, emergency, roadside, lockout, key cutting, duplicate key, and key fob pages are all linked from this index.",
+    q: "Can I find the right locksmith service here?",
+    a: "Yes. You can choose the service, city, emergency, roadside, lockout, key cutting, duplicate key, or key fob page that matches your need.",
   },
   {
     q: "Should I start with a city page or a service page?",
     a: "Use a city page when location matters most. Use a service page when the lock type, vehicle problem, key issue, or business access concern is the clearest starting point.",
   },
   {
-    q: "Are city links intentionally short?",
-    a: "Yes. City links use city names only so the page does not become a repeated keyword list. The destination page carries the specific service context.",
+    q: "Are the city links easy to scan?",
+    a: "Yes. City links use city names only so you can get to the right local service quickly.",
   },
 ];
 
@@ -62,13 +62,9 @@ export default function ServicesPage() {
         ]}
       />
       <section className="crew-shell crew-page-head">
-        <p className="crew-kicker">Complete index</p>
-        <h1>Locksmith Services and City Routes</h1>
-        <p>
-          Use this index to move from an urgent lockout to the right service page, or from a city to the right local
-          route. The labels are intentionally clean so the index stays readable instead of repeating the same locksmith
-          keywords across every link.
-        </p>
+        <p className="crew-kicker">Service directory</p>
+        <h1>Locksmith Services and City Pages</h1>
+        <p>Find the right help for a lockout, key issue, roadside problem, or local visit.</p>
       </section>
 
       <section className="crew-section">
@@ -77,9 +73,8 @@ export default function ServicesPage() {
           <div className="crew-card-grid crew-card-grid-4">
             {SERVICE_PILLARS.map((page) => (
               <Link className="crew-card crew-card-link" href={toPath(page.PageSlug)} key={page.PageSlug}>
-                <span>{page.Priority}</span>
                 <h3>{pageListLabel(page)}</h3>
-                <p>{page.SearchIntent} page for {page.TargetArea.toLowerCase()}.</p>
+                <p>Choose this service when you need direct help with the issue.</p>
               </Link>
             ))}
           </div>

@@ -21,7 +21,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 const homeFaqs = [
   {
     q: "What kinds of locksmith calls does Lockout Crew help route?",
-    a: "The site is built around emergency lockouts, car lockouts, mobile locksmith service, roadside access problems, commercial locksmith requests, key cutting, duplicate keys, and key fob replacement pages.",
+    a: "We help with emergency lockouts, car lockouts, mobile locksmith service, roadside access problems, commercial locksmith requests, key cutting, duplicate keys, and key fob replacement.",
   },
   {
     q: "Can I call if I am not sure which locksmith page fits?",
@@ -29,7 +29,7 @@ const homeFaqs = [
   },
   {
     q: "Why are there separate city and service pages?",
-    a: "City pages keep local timing, routes, and parking context visible. Service pages keep the lock type and access problem clear. Together they help callers explain the issue faster.",
+    a: "City pages keep local timing, travel, and parking context clear. Service pages keep the lock type and access problem clear. Together they help you explain the issue faster.",
   },
 ];
 
@@ -90,7 +90,7 @@ export default function HomePage() {
                 <span>Call {PHONE_DISPLAY}</span>
               </a>
               <Link className="crew-secondary" href="/services">
-                Service Index
+                Services
               </Link>
             </div>
           </div>
@@ -137,15 +137,14 @@ export default function HomePage() {
       <section className="crew-section">
         <div className="crew-shell">
           <div className="crew-section-head">
-            <p className="crew-kicker">Main routes</p>
-            <h2>Service Hubs</h2>
+            <p className="crew-kicker">Main services</p>
+            <h2>Popular locksmith help</h2>
           </div>
           <div className="crew-card-grid crew-card-grid-4">
             {SERVICE_PILLARS.map((page) => (
               <Link className="crew-card crew-card-link" href={toPath(page.PageSlug)} key={page.PageSlug}>
-                <span>{page.PageType}</span>
                 <h3>{pageListLabel(page)}</h3>
-                <p>{page.SearchIntent} intake for lockouts, access issues, and related local pages.</p>
+                <p>Fast help for lockouts, access issues, and urgent service requests.</p>
               </Link>
             ))}
           </div>
@@ -156,7 +155,7 @@ export default function HomePage() {
         <div className="crew-shell">
           <div className="crew-section-head">
             <p className="crew-kicker">Urgent calls</p>
-            <h2>High-Priority Locksmith Pages</h2>
+            <h2>Urgent locksmith help</h2>
           </div>
           <div className="crew-chip-grid">
             {[...EMERGENCY_PAGES, ...SUPPORT_PAGES.slice(0, 10)].map((page) => (
@@ -171,8 +170,8 @@ export default function HomePage() {
       <section className="crew-section">
         <div className="crew-shell">
           <div className="crew-section-head">
-            <p className="crew-kicker">Local pages</p>
-            <h2>City Coverage</h2>
+            <p className="crew-kicker">Nearby help</p>
+            <h2>City locksmith service</h2>
           </div>
           <div className="crew-city-grid">
             {UNIQUE_CITY_PAGES.slice(0, 36).map((page) => (

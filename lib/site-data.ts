@@ -193,7 +193,7 @@ export function faqsFor(page: SeoPage) {
     },
     {
       q: `Can Lockout Crew help after hours in ${location}?`,
-      a: `Yes. The site is organized for urgent calls, late-night lockouts, vehicle access problems, and service pages that help callers explain the situation quickly before dispatch or scheduling decisions are made.`,
+      a: `Yes. We help with urgent calls, late-night lockouts, vehicle access problems, and the details needed to get the right help moving quickly.`,
     },
   ];
 }

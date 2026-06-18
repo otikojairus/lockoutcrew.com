@@ -205,14 +205,6 @@ export default async function DynamicSeoPage({ params }: Props) {
               </Link>
             </div>
           </div>
-          <aside className="crew-page-meter">
-            <span>Priority</span>
-            <strong>{page.Priority.replace(/^Top Priority$/, "Top")}</strong>
-            <span>Intent</span>
-            <strong>{page.SearchIntent}</strong>
-            <span>Area</span>
-            <strong>{pageLocation(page)}</strong>
-          </aside>
         </div>
       </section>
 
@@ -237,25 +229,25 @@ export default async function DynamicSeoPage({ params }: Props) {
           <div className="crew-shell">
             <div className="crew-section-head">
               <p className="crew-kicker">{pageLocation(page)} notes</p>
-              <h2>Local Access Context</h2>
+              <h2>Local service details</h2>
             </div>
             <div className="crew-card-grid crew-card-grid-3">
               <article className="crew-card">
                 <h3>Routes</h3>
                 <p>
                   Calls may involve travel around {facts.routes[0]} or {facts.routes[1]}, where timing, parking, and
-                  roadside access can shape the first decision.
+                  roadside access can shape arrival.
                 </p>
               </article>
               <article className="crew-card">
                 <h3>Common Areas</h3>
                 <p>
-                  Service planning may account for parking and access near {facts.places[0]} and {facts.places[1]}.
+                  Service may involve parking and access near {facts.places[0]} and {facts.places[1]}.
                 </p>
               </article>
               <article className="crew-card">
                 <h3>Field Note</h3>
-                <p>{facts.note} can affect how quickly a lockout, key, or vehicle access problem is sorted.</p>
+                <p>{facts.note} can affect how quickly a lockout, key, or vehicle access problem is handled.</p>
               </article>
             </div>
           </div>
@@ -265,14 +257,14 @@ export default async function DynamicSeoPage({ params }: Props) {
       <section className="crew-section crew-section-dark">
         <div className="crew-shell crew-split">
           <div>
-            <p className="crew-kicker">Scope</p>
-            <h2>What This Page Helps You Clarify</h2>
+            <p className="crew-kicker">What to share</p>
+            <h2>Help us route the right service</h2>
           </div>
           <ul className="crew-checks">
-            <li>Whether the call involves a car, home, business, key, fob, lock cylinder, or roadside situation.</li>
-            <li>Whether anyone is stranded, unsafe, waiting outside, or blocked from operating a business.</li>
-            <li>Which access details matter before entry, key cutting, fob replacement, or lock service is routed.</li>
-            <li>How to explain location constraints like parkades, lots, curbside timing, gates, or building access.</li>
+            <li>Whether the issue involves a car, home, business, key, fob, lock cylinder, or roadside situation.</li>
+            <li>Whether anyone is stranded, unsafe, waiting outside, or blocked from getting back to normal.</li>
+            <li>Which access details matter before entry, key cutting, fob replacement, or lock service begins.</li>
+            <li>Any location details like parkades, lots, curbside timing, gates, or building access.</li>
           </ul>
         </div>
       </section>
