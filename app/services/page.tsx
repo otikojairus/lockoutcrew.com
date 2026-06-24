@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PhoneIcon } from "@/components/icons";
 import { JsonLd } from "@/components/json-ld";
 import {
   CITY_PAGES,
-  SEO_PAGES,
+  EMERGENCY_PAGES,
+  PHONE_DISPLAY,
+  PHONE_E164,
   SERVICE_PILLARS,
   SITE_NAME,
+  SUPPORT_PAGES,
   absoluteUrl,
   linkLabel,
-  pageListLabel,
   provinceFromTargetArea,
   toPath,
 } from "@/lib/site-data";
@@ -16,32 +19,40 @@ import { breadcrumbSchema } from "@/lib/schema";
 
 const serviceFaqs = [
   {
-    q: "Can I find the right locksmith service here?",
-    a: "Yes. You can choose the service, city, emergency, roadside, lockout, key cutting, duplicate key, or key fob page that matches your need.",
+    q: "Should I start with a service page or a city page?",
+    a: "Start with a service page when the problem itself is the clearest detail, such as a car lockout, key issue, or emergency access concern. Start with a city page when location, traffic, building access, or local context matters most.",
   },
   {
-    q: "Should I start with a city page or a service page?",
-    a: "Use a city page when location matters most. Use a service page when the lock type, vehicle problem, key issue, or business access concern is the clearest starting point.",
+    q: "Why does this directory include emergency, city, and specialist pages?",
+    a: "People search in different ways. Some know the city first, some know the exact problem first, and some only know the situation feels urgent. This directory is meant to support all three without sending people into dead ends.",
   },
   {
-    q: "Are the city links easy to scan?",
-    a: "Yes. City links use city names only so you can get to the right local service quickly.",
+    q: "Can I call even if I am not sure which page fits best?",
+    a: "Yes. If you are unsure, use the call button and describe what is locked, where you are, and what is making the issue urgent. The point of this site is to help that conversation start clearly, not to make you diagnose the problem alone.",
   },
 ];
 
 export const metadata: Metadata = {
-  title: `Locksmith Services | ${SITE_NAME}`,
+  title: `Locksmith Services Canada Guide | ${SITE_NAME}`,
   description:
-    "Browse locksmith help for lockouts, roadside problems, key cutting, vehicle access, commercial locks, and local service needs.",
+    "Locksmith services Canada pages for lockouts, key issues, roadside help, and city-specific support. Call Lockout Crew now and find the right page fast.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: `${SITE_NAME} Locksmith Services`,
-    description: "Locksmith help for Canada-wide and local service needs.",
+    title: `Locksmith Services Canada Guide | ${SITE_NAME}`,
+    description: "Browse locksmith, emergency, and city pages built to help customers find the right service fast.",
     url: absoluteUrl("/services"),
   },
 };
 
 export default function ServicesPage() {
+  const cityGroups = Object.entries(
+    CITY_PAGES.reduce<Record<string, typeof CITY_PAGES>>((groups, page) => {
+      const area = provinceFromTargetArea(page.TargetArea);
+      (groups[area] ||= []).push(page);
+      return groups;
+    }, {}),
+  );
+
   return (
     <main className="crew-main crew-page">
       <JsonLd
@@ -61,20 +72,70 @@ export default function ServicesPage() {
           },
         ]}
       />
-      <section className="crew-shell crew-page-head">
-        <p className="crew-kicker">Service directory</p>
-        <h1>Locksmith Services and City Pages</h1>
-        <p>Find the right help for a lockout, key issue, roadside problem, or local visit.</p>
+
+      <section className="crew-page-hero">
+        <div className="crew-shell crew-page-hero-grid">
+          <div>
+            <p className="crew-kicker">Service directory</p>
+            <h1>Locksmith Services Canada</h1>
+            <p>
+              This page is the main directory for the site, built for people who want one clear place to compare city
+              pages, broad service categories, urgent landing pages, and more specific lock or key topics. Some visitors
+              know the city first. Others know the exact problem first. Others just know they are stuck and need to call.
+              The goal here is to make every one of those paths easy to follow, with no orphan pages and no vague links
+              that force you to guess where to go next.
+            </p>
+            <div className="crew-actions">
+              <a className="crew-call crew-call-large" href={`tel:${PHONE_E164}`}>
+                <PhoneIcon />
+                <span>Call {PHONE_DISPLAY}</span>
+              </a>
+              <Link className="crew-secondary" href="/">
+                Back to Home
+              </Link>
+            </div>
+          </div>
+          <aside className="crew-page-meter" aria-label="Directory summary">
+            <span>National service pages</span>
+            <b>{SERVICE_PILLARS.length + SUPPORT_PAGES.length}</b>
+            <span>City pages</span>
+            <b>{CITY_PAGES.length}</b>
+            <span>Emergency pages</span>
+            <b>{EMERGENCY_PAGES.length}</b>
+            <span>Purpose</span>
+            <b>Help customers reach the right page without guesswork</b>
+          </aside>
+        </div>
       </section>
 
       <section className="crew-section">
         <div className="crew-shell">
-          <h2>Popular services</h2>
+          <div className="crew-section-head">
+            <p className="crew-kicker">Core categories</p>
+            <h2>Start with the broad service you need</h2>
+          </div>
           <div className="crew-card-grid crew-card-grid-4">
             {SERVICE_PILLARS.map((page) => (
               <Link className="crew-card crew-card-link" href={toPath(page.PageSlug)} key={page.PageSlug}>
-                <h3>{pageListLabel(page)}</h3>
-                <p>Choose this service when you need direct help with the issue.</p>
+                <h3>{linkLabel(page)}</h3>
+                <p>Use this page when you want the main service family before choosing a more specific city or symptom page.</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="crew-section crew-local-band">
+        <div className="crew-shell">
+          <div className="crew-section-head">
+            <p className="crew-kicker">Urgent and specialist pages</p>
+            <h2>Find the exact problem faster</h2>
+          </div>
+          <div className="crew-card-grid crew-card-grid-3">
+            {[...EMERGENCY_PAGES, ...SUPPORT_PAGES].map((page) => (
+              <Link className="crew-card crew-card-link" href={toPath(page.PageSlug)} key={page.PageSlug}>
+                <h3>{linkLabel(page)}</h3>
+                <p>Open this page for a narrower customer problem, a more urgent situation, or a more specific search intent.</p>
               </Link>
             ))}
           </div>
@@ -83,16 +144,13 @@ export default function ServicesPage() {
 
       <section className="crew-section crew-section-dark">
         <div className="crew-shell">
-          <h2>Areas we serve</h2>
-          {Object.entries(
-            CITY_PAGES.reduce<Record<string, typeof CITY_PAGES>>((groups, page) => {
-              const area = provinceFromTargetArea(page.TargetArea);
-              (groups[area] ||= []).push(page);
-              return groups;
-            }, {}),
-          ).map(([area, pages]) => (
-            <div key={area} style={{ marginTop: "1.5rem" }}>
-              <h3 style={{ marginBottom: "0.75rem" }}>{area}</h3>
+          <div className="crew-section-head">
+            <p className="crew-kicker">Cities</p>
+            <h2>Browse city locksmith pages by area</h2>
+          </div>
+          {cityGroups.map(([area, pages]) => (
+            <div key={area} className="crew-area-block">
+              <h3>{area}</h3>
               <div className="crew-city-grid">
                 {pages.map((page) => (
                   <Link className="crew-city-tile" href={toPath(page.PageSlug)} key={page.PageSlug}>
@@ -105,9 +163,12 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="crew-section">
+      <section className="crew-section crew-faq-band">
         <div className="crew-shell">
-          <h2>Common Questions</h2>
+          <div className="crew-section-head">
+            <p className="crew-kicker">Questions</p>
+            <h2>How to use this directory</h2>
+          </div>
           <div className="crew-card-grid crew-card-grid-3">
             {serviceFaqs.map((faq) => (
               <article className="crew-card" key={faq.q}>

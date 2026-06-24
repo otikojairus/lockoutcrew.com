@@ -8,6 +8,7 @@ import {
   SERVICE_PILLARS,
   SITE_NAME,
   UNIQUE_CITY_PAGES,
+  linkLabel,
   pageListLabel,
   toPath,
 } from "@/lib/site-data";
@@ -61,7 +62,7 @@ export function SiteFooter() {
           <nav className="crew-footer-links crew-city-list" aria-label="Footer city pages">
             {UNIQUE_CITY_PAGES.slice(0, 18).map((page) => (
               <Link href={toPath(page.PageSlug)} key={page.PageSlug}>
-                {pageListLabel(page)}
+                {linkLabel(page)}
               </Link>
             ))}
           </nav>

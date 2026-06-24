@@ -25,11 +25,7 @@ export function breadcrumbSchema(items: Array<{ name: string; path: string }>) {
 }
 
 export function pageBreadcrumb(page: SeoPage) {
-  return breadcrumbSchema([
-    { name: "Home", path: "/" },
-    { name: "Services", path: "/services" },
-    { name: buildH1(page), path: toPath(page.PageSlug) },
-  ]);
+  return breadcrumbSchema([{ name: "Home", path: "/" }, { name: buildH1(page), path: toPath(page.PageSlug) }]);
 }
 
 export function faqSchema(page: SeoPage) {

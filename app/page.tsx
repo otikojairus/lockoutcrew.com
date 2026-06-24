@@ -13,7 +13,6 @@ import {
   UNIQUE_CITY_PAGES,
   absoluteUrl,
   linkLabel,
-  pageListLabel,
   toPath,
 } from "@/lib/site-data";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -34,12 +33,12 @@ const homeFaqs = [
 ];
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} | Emergency Locksmith and Lockout Help`,
+  title: `Emergency Locksmith Canada 24/7 | ${SITE_NAME}`,
   description:
-    "Emergency locksmith, car lockout, key cutting, mobile locksmith, and roadside lockout pages across Canada. Call 1-888-320-3769 for direct intake.",
+    "Emergency locksmith Canada support for lockouts, car access, keys, and roadside help. Call Lockout Crew now for fast intake and service guidance.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: `${SITE_NAME} | Emergency Locksmith and Lockout Help`,
+    title: `Emergency Locksmith Canada 24/7 | ${SITE_NAME}`,
     description: "Fast locksmith and lockout call routing for vehicles, homes, businesses, and keys.",
     url: absoluteUrl("/"),
     type: "website",
@@ -67,7 +66,7 @@ export default function HomePage() {
       <section className="crew-hero">
         <Image
           className="crew-hero-image"
-          src="/lockout-hero.png"
+          src="/lockout-hero.webp"
           alt="Locksmith responding to a nighttime vehicle lockout"
           fill
           priority
@@ -77,12 +76,14 @@ export default function HomePage() {
         <div className="crew-shell crew-hero-grid">
           <div className="crew-hero-copy">
             <p className="crew-kicker">24/7 locksmith intake</p>
-            <h1>{SITE_NAME}</h1>
+            <h1>Emergency Locksmith Canada</h1>
             <p>
               Lockouts get stressful quickly: a running car in a parking lot, keys on the seat, a storefront that will
-              not open, a tenant waiting outside, or a fob that stops responding at the worst moment. Lockout Crew keeps
-              the service path direct so callers can explain the lock, the location, the urgency, and the access issue
-              without sorting through generic options first.
+              not open, a tenant waiting outside, or a fob that stops responding at the worst moment. Lockout Crew is
+              built to keep that moment from getting more confusing. Instead of forcing visitors through thin, repetitive
+              pages, the site is organized around real customer needs, with clear service categories, city pages, and
+              urgent paths that make it easier to explain the problem, understand the next step, and call for help
+              without wasting time.
             </p>
             <div className="crew-actions">
               <a className="crew-call crew-call-large" href={`tel:${PHONE_E164}`}>
@@ -143,7 +144,7 @@ export default function HomePage() {
           <div className="crew-card-grid crew-card-grid-4">
             {SERVICE_PILLARS.map((page) => (
               <Link className="crew-card crew-card-link" href={toPath(page.PageSlug)} key={page.PageSlug}>
-                <h3>{pageListLabel(page)}</h3>
+                <h3>{linkLabel(page)}</h3>
                 <p>Fast help for lockouts, access issues, and urgent service requests.</p>
               </Link>
             ))}
