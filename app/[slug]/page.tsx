@@ -64,7 +64,7 @@ function introText(page: Page) {
   const category = pageCategory(page);
 
   if (isCityPage(page) && facts) {
-    return `If you need locksmith help in ${location}, the best first move is giving a clear picture of where you are, what is locked, and what is making the situation urgent. A call near ${facts.landmark}, along ${facts.routes[0]}, or in neighbourhoods like ${facts.places[0]} and ${facts.places[1]} can play out very differently depending on parking, building access, traffic, and weather. This page is built to make that first conversation easier, so you can explain the problem in plain language and move toward the right next step without wasting time.`;
+    return `If you need help in ${location}, the best first move is giving a clear picture of where you are, what is locked, and what is making the situation urgent. A call near ${facts.landmark}, along ${facts.routes[0]}, or in neighbourhoods like ${facts.places[0]} and ${facts.places[1]} can play out very differently depending on parking, building entry, traffic, and weather. We are here to make that first conversation easier so you can explain the problem in plain language and move toward the right next step without wasting time.`;
   }
 
   if (category === "pillar") {
@@ -75,7 +75,7 @@ function introText(page: Page) {
     return `Urgent lock and key problems rarely happen at a convenient time. You might be standing in a dark lot, outside a building that should already be open, or on the shoulder of the road trying to figure out what failed first. This page is meant for that kind of moment. Instead of making you sort through a long directory, it focuses on the details that matter most right away: your location, the access issue, whether anyone is stranded or unsafe, and how quickly the situation needs to be handled.`;
   }
 
-  return `This page is a focused starting point for ${topic.toLowerCase()} in ${location}. Some people land here because they know the exact problem, while others just know they cannot get back into the car, home, office, or locked area they need to access. Either way, the fastest path is a clear call that covers the location, the lock or key involved, and anything unusual about the setting. If the issue belongs under a broader category such as ${pageListLabel(pillar).toLowerCase()}, this page also makes that relationship easy to follow.`;
+  return `If you need help with ${topic.toLowerCase()} in ${location}, you are in the right place. Whether you know the exact problem or just know you cannot get into the car, home, office, or locked area, the fastest move is a clear call that covers where you are, what is locked, and anything that makes the situation feel urgent. If the issue turns out to be closer to ${pageListLabel(pillar).toLowerCase()}, the links below will get you there without starting over.`;
 }
 
 function processSteps(page: Page) {
@@ -130,15 +130,15 @@ function guidanceCards(page: Page) {
     return [
       {
         title: "A broad starting point",
-        text: "Pillar pages work well when the issue is clearly urgent but the exact fix is still unclear. They keep the conversation practical instead of forcing you to guess the right sub-service first.",
+        text: "Start here when the issue is clearly urgent but you are not sure exactly what fix is needed. You can describe the situation in plain terms and the right next step will become clearer.",
       },
       {
         title: "Useful across more scenarios",
         text: `This page can still help if the problem moves between settings, such as a vehicle issue that becomes a roadside problem or a business lock issue that also involves key replacement in ${location}.`,
       },
       {
-        title: "Built to guide the next click",
-        text: "If you need a city-specific page, a more urgent landing page, or a narrower key-related service, the internal links below are meant to get you there without dead ends.",
+        title: "Easy to continue from here",
+        text: "If you need a city-specific version of this service or a more focused type of help, the links below will get you there without guessing.",
       },
     ];
   }
@@ -149,12 +149,12 @@ function guidanceCards(page: Page) {
       text: "This page narrows the conversation to one kind of access problem so you can explain the issue faster and reach the most relevant help without sorting through unrelated options.",
     },
     {
-      title: "Useful for daytime or after-hours calls",
-      text: "The same page should still make sense whether the problem happens in a quiet driveway, a busy commercial block, or a parking lot late at night.",
+      title: "Available day or night",
+      text: "Whether the problem happens in a quiet driveway, a busy commercial block, or a parking lot late at night, the steps are the same.",
     },
     {
-      title: "Designed to connect related help",
-      text: "If your situation turns out to be slightly different from what you first thought, the service and city links on this page point toward the nearest match instead of leaving you at a dead end.",
+      title: "Easy to continue from here",
+      text: "If your situation turns out to be slightly different from what you first expected, the service and city links on this page point you toward the nearest match.",
     },
   ];
 }
@@ -170,37 +170,37 @@ function narrativeSection(page: Page) {
     return {
       title: `What this feels like on the ground in ${location}`,
       paragraphs: [
-        `Local locksmith calls usually sound simple at first and then get more specific very quickly. Someone may say they are locked out, but what matters next is whether they are outside a condo in ${facts.places[0]}, dealing with a key issue near ${facts.landmark}, or stopped along ${facts.routes[0]} with traffic moving around them. Those details help shape the safest and most practical next move.`,
-        `That is also why this page does not try to sound generic. ${location} has its own rhythm, from ${facts.climate} to the way ${facts.note}. Customer-facing service copy should reflect that reality, because the real goal is not stuffing in phrases. The goal is helping someone explain the problem clearly and find the right help with less stress.`,
+        `Calls usually sound simple at first and then get more specific very quickly. Someone may say they are locked out, but what matters next is whether they are outside a condo in ${facts.places[0]}, dealing with a key issue near ${facts.landmark}, or stopped along ${facts.routes[0]} with traffic moving around them. Those details shape the safest and most practical next move.`,
+        `That is also why this page stays specific to ${location}. The area has its own rhythm, from ${facts.climate} to the way ${facts.note}. The goal is helping you explain the situation clearly and find the right help with less stress.`,
       ],
     };
   }
 
   if (category === "pillar") {
     return {
-      title: "Why this service page is broader than it looks",
+      title: "What this covers",
       paragraphs: [
-        `A page like this has to do two jobs at once. It needs to feel useful for someone who already knows the type of help they want, and it also needs to be clear for someone who only knows that access has broken down. That is why the copy stays grounded in the customer problem first: being locked out, delayed, unable to secure a property, or stuck with a key or fob issue that interrupted the day.`,
-        `It also serves as the top of the internal linking path for related city pages. If you realize you need a local version of ${topic.toLowerCase()} or a more specific variation tied to a car, key, roadside situation, or business access issue, this page should make that next step obvious instead of making you start your search over again.`,
+        `Whether you already know the type of help you need or just know that access has broken down, this page is built to make the next step clear. The focus stays on your situation: being locked out, delayed, unable to secure a property, or stuck with a key or fob issue that interrupted the day.`,
+        `If you realize the problem is more specific than you first thought, the links on this page point toward local versions of this service and related types of help, so you can find the right fit without starting over.`,
       ],
     };
   }
 
   if (category === "emergency") {
     return {
-      title: "Why urgent pages need a different tone",
+      title: "What to expect when you call",
       paragraphs: [
-        "Emergency pages should not read like a directory. When someone lands here, they usually want fast reassurance that they are in the right place and a simple way to call. The copy on this page is written to keep the focus on urgency, safety, and practical next steps rather than long explanations that slow the reader down.",
-        `That same urgency is why this page also points back to ${pageListLabel(pillar).toLowerCase()} and nearby local pages. If the situation is still urgent but needs more location detail, you should be able to move in one step instead of bouncing through a maze of thin pages.`,
+        "When something urgent happens, the last thing you need is a wall of information to sort through. This page is built to move quickly: confirm you are in the right place, make the call, and describe the situation. Everything else can follow.",
+        `If your situation involves a specific location or a related service, the links below make the next step easy to find so you are not bouncing around trying to figure it out under pressure.`,
       ],
     };
   }
 
   return {
-    title: "How this page fits into the wider site",
+    title: "How to get the right help",
     paragraphs: [
-      `Not every visitor starts at the main ${pageListLabel(pillar).toLowerCase()} page. Some people search for the exact problem they are dealing with and land directly here. That is why this page stays narrowly focused while still linking back to the broader service family and related city pages.`,
-      `The result should feel more helpful than a generic near-me page. It gives you a customer-facing explanation of the problem, a clear call to action, and a path to related services in ${location} if the situation turns out to involve more than one issue.`,
+      `Whether you came here from a search or followed a link, this page is built to be useful right away. It stays focused on the specific problem while still connecting to the broader service category if you need more context.`,
+      `If the situation turns out to be slightly different from what you first expected, the links on this page connect to related services in ${location} so you can find the right fit without starting over.`,
     ],
   };
 }
@@ -241,7 +241,7 @@ function RelatedLinks({ page }: { page: Page }) {
         <div className="crew-city-grid">
           {cityLinks.map((item) => (
             <Link className="crew-city-tile" key={item.PageSlug} href={toPath(item.PageSlug)}>
-              {linkLabel(item)}
+              {cityFromTargetArea(item.TargetArea)}
             </Link>
           ))}
         </div>
@@ -266,7 +266,7 @@ function RelatedLinks({ page }: { page: Page }) {
             <Link className="crew-row-link" key={item.PageSlug} href={toPath(item.PageSlug)}>
               <span>Same city</span>
               <strong>{linkLabel(item)}</strong>
-              <p>Explore another locksmith service page for {cityFromTargetArea(item.TargetArea)}.</p>
+              <p>See another service option for {cityFromTargetArea(item.TargetArea)}.</p>
             </Link>
           ))}
         </div>
@@ -314,7 +314,7 @@ export default async function DynamicSeoPage({ params }: Props) {
       <section className="crew-page-hero">
         <div className="crew-shell crew-page-hero-grid">
           <div>
-            <p className="crew-kicker">Locksmith help</p>
+            <p className="crew-kicker">Get help now</p>
             <h1>{buildH1(page)}</h1>
             <p>{introText(page)}</p>
             <div className="crew-actions">
@@ -327,16 +327,6 @@ export default async function DynamicSeoPage({ params }: Props) {
               </Link>
             </div>
           </div>
-          <aside className="crew-page-meter" aria-label="Service page summary">
-            <span>Location</span>
-            <b>{pageLocation(page)}</b>
-            <span>Service focus</span>
-            <b>{serviceTopicLabel(page)}</b>
-            <span>Page type</span>
-            <b>{page.PageType}</b>
-            <span>Best next step</span>
-            <b>Call and describe the access problem clearly</b>
-          </aside>
         </div>
       </section>
 
@@ -384,7 +374,7 @@ export default async function DynamicSeoPage({ params }: Props) {
           <div className="crew-shell">
             <div className="crew-section-head">
               <p className="crew-kicker">{pageLocation(page)} details</p>
-              <h2>Local details that make this page specific</h2>
+              <h2>What to know about this area</h2>
             </div>
             <div className="crew-card-grid crew-card-grid-3">
               {localCards(page).map((card) => (
@@ -401,7 +391,7 @@ export default async function DynamicSeoPage({ params }: Props) {
       <section className="crew-section crew-section-dark">
         <div className="crew-shell crew-copy-band">
           <div className="crew-section-head">
-            <p className="crew-kicker">Customer guide</p>
+            <p className="crew-kicker">Good to know</p>
             <h2>{narrative.title}</h2>
           </div>
           <div className="crew-copy-columns">

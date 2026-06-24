@@ -11,6 +11,7 @@ import {
   SITE_NAME,
   SUPPORT_PAGES,
   absoluteUrl,
+  cityFromTargetArea,
   linkLabel,
   provinceFromTargetArea,
   toPath,
@@ -19,16 +20,16 @@ import { breadcrumbSchema } from "@/lib/schema";
 
 const serviceFaqs = [
   {
-    q: "Should I start with a service page or a city page?",
-    a: "Start with a service page when the problem itself is the clearest detail, such as a car lockout, key issue, or emergency access concern. Start with a city page when location, traffic, building access, or local context matters most.",
+    q: "Should I describe the problem type or my location first?",
+    a: "Either works. Lead with the problem if that is clearer, such as a car lockout, key issue, or after-hours entry. Lead with the city if location, traffic, or building access is the main factor. Both paths end at the same call.",
   },
   {
-    q: "Why does this directory include emergency, city, and specialist pages?",
-    a: "People search in different ways. Some know the city first, some know the exact problem first, and some only know the situation feels urgent. This directory is meant to support all three without sending people into dead ends.",
+    q: "What if I am not sure what I need?",
+    a: "Just call and describe what is happening in plain terms. You do not need to know the right category or the exact type of service before reaching out.",
   },
   {
-    q: "Can I call even if I am not sure which page fits best?",
-    a: "Yes. If you are unsure, use the call button and describe what is locked, where you are, and what is making the issue urgent. The point of this site is to help that conversation start clearly, not to make you diagnose the problem alone.",
+    q: "Does it matter what time I call?",
+    a: "No. Lockout situations do not follow business hours, and neither do we. Whether it is late at night, early in the morning, or a holiday weekend, reach out the same way and describe the situation.",
   },
 ];
 
@@ -79,11 +80,9 @@ export default function ServicesPage() {
             <p className="crew-kicker">Service directory</p>
             <h1>Locksmith Services Canada</h1>
             <p>
-              This page is the main directory for the site, built for people who want one clear place to compare city
-              pages, broad service categories, urgent landing pages, and more specific lock or key topics. Some visitors
-              know the city first. Others know the exact problem first. Others just know they are stuck and need to call.
-              The goal here is to make every one of those paths easy to follow, with no orphan pages and no vague links
-              that force you to guess where to go next.
+              Whether you know exactly what is wrong or just know you are stuck, this is the right place to start.
+              Browse by service type if you know the problem, by city if location matters most, or just call and describe
+              the situation. You do not need to have it all figured out before you reach out.
             </p>
             <div className="crew-actions">
               <a className="crew-call crew-call-large" href={`tel:${PHONE_E164}`}>
@@ -95,16 +94,6 @@ export default function ServicesPage() {
               </Link>
             </div>
           </div>
-          <aside className="crew-page-meter" aria-label="Directory summary">
-            <span>National service pages</span>
-            <b>{SERVICE_PILLARS.length + SUPPORT_PAGES.length}</b>
-            <span>City pages</span>
-            <b>{CITY_PAGES.length}</b>
-            <span>Emergency pages</span>
-            <b>{EMERGENCY_PAGES.length}</b>
-            <span>Purpose</span>
-            <b>Help customers reach the right page without guesswork</b>
-          </aside>
         </div>
       </section>
 
@@ -118,7 +107,7 @@ export default function ServicesPage() {
             {SERVICE_PILLARS.map((page) => (
               <Link className="crew-card crew-card-link" href={toPath(page.PageSlug)} key={page.PageSlug}>
                 <h3>{linkLabel(page)}</h3>
-                <p>Use this page when you want the main service family before choosing a more specific city or symptom page.</p>
+                <p>Start here if you know the type of help you need and want to understand what the service covers before calling.</p>
               </Link>
             ))}
           </div>
@@ -135,7 +124,7 @@ export default function ServicesPage() {
             {[...EMERGENCY_PAGES, ...SUPPORT_PAGES].map((page) => (
               <Link className="crew-card crew-card-link" href={toPath(page.PageSlug)} key={page.PageSlug}>
                 <h3>{linkLabel(page)}</h3>
-                <p>Open this page for a narrower customer problem, a more urgent situation, or a more specific search intent.</p>
+                <p>Use this when you know the specific situation you are dealing with, such as a car lockout, fob failure, or after-hours access issue.</p>
               </Link>
             ))}
           </div>
@@ -146,7 +135,7 @@ export default function ServicesPage() {
         <div className="crew-shell">
           <div className="crew-section-head">
             <p className="crew-kicker">Cities</p>
-            <h2>Browse city locksmith pages by area</h2>
+            <h2>Browse by city</h2>
           </div>
           {cityGroups.map(([area, pages]) => (
             <div key={area} className="crew-area-block">
@@ -154,7 +143,7 @@ export default function ServicesPage() {
               <div className="crew-city-grid">
                 {pages.map((page) => (
                   <Link className="crew-city-tile" href={toPath(page.PageSlug)} key={page.PageSlug}>
-                    {linkLabel(page)}
+                    {cityFromTargetArea(page.TargetArea)}
                   </Link>
                 ))}
               </div>

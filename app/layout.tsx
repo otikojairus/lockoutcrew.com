@@ -7,15 +7,15 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: `${SITE_NAME} | Locksmith and Lockout Response`,
+    default: `${SITE_NAME} | 24/7 Lockout Help`,
     template: "%s",
   },
   description:
-    "Locksmith and lockout service pages for emergency locksmith calls, vehicle lockouts, key cutting, key fob replacement, and roadside lockout support across Canada.",
+    "Fast help for car lockouts, home and business entry, key cutting, fob replacement, and roadside access problems across Canada.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: `${SITE_NAME} | Locksmith and Lockout Response`,
-    description: "Call-first locksmith routing for urgent lockouts, car keys, business locks, and key services.",
+    title: `${SITE_NAME} | 24/7 Lockout Help`,
+    description: "Fast help for urgent lockouts, car keys, business entry, and key problems across Canada.",
     url: absoluteUrl("/"),
     type: "website",
     siteName: SITE_NAME,

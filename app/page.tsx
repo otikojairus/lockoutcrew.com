@@ -12,6 +12,7 @@ import {
   SUPPORT_PAGES,
   UNIQUE_CITY_PAGES,
   absoluteUrl,
+  cityFromTargetArea,
   linkLabel,
   toPath,
 } from "@/lib/site-data";
@@ -19,16 +20,16 @@ import { breadcrumbSchema } from "@/lib/schema";
 
 const homeFaqs = [
   {
-    q: "What kinds of locksmith calls does Lockout Crew help route?",
-    a: "We help with emergency lockouts, car lockouts, mobile locksmith service, roadside access problems, commercial locksmith requests, key cutting, duplicate keys, and key fob replacement.",
+    q: "What kinds of situations can Lockout Crew help with?",
+    a: "We help with car lockouts, home and business lockouts, key cutting, duplicate keys, fob replacement, roadside access problems, and after-hours entry. If you are not sure, just call and describe what is happening.",
   },
   {
-    q: "Can I call if I am not sure which locksmith page fits?",
-    a: "Yes. Use the call button and describe the locked door, vehicle, key, fob, business, or roadside situation. We can sort urgency, location, access needs, and the right help.",
+    q: "Can I call if I am not sure what I need?",
+    a: "Yes. Use the call button and describe what is locked, where you are, and what is making the situation feel urgent. We will sort out the right next step from there.",
   },
   {
-    q: "Why are there separate city and service pages?",
-    a: "City pages keep local timing, travel, and parking context clear. Service pages keep the lock type and access problem clear. Together they help you explain the issue faster.",
+    q: "What should I have ready before I call?",
+    a: "Just know where you are, what is locked, and whether anything makes the situation urgent, like a running vehicle, severe weather, or someone stranded outside. You do not need to know the technical name of the lock.",
   },
 ];
 
@@ -75,15 +76,13 @@ export default function HomePage() {
         <div className="crew-hero-scrim" />
         <div className="crew-shell crew-hero-grid">
           <div className="crew-hero-copy">
-            <p className="crew-kicker">24/7 locksmith intake</p>
+            <p className="crew-kicker">Available 24/7</p>
             <h1>Emergency Locksmith Canada</h1>
             <p>
               Lockouts get stressful quickly: a running car in a parking lot, keys on the seat, a storefront that will
               not open, a tenant waiting outside, or a fob that stops responding at the worst moment. Lockout Crew is
-              built to keep that moment from getting more confusing. Instead of forcing visitors through thin, repetitive
-              pages, the site is organized around real customer needs, with clear service categories, city pages, and
-              urgent paths that make it easier to explain the problem, understand the next step, and call for help
-              without wasting time.
+              here when that happens. Tell us where you are, what is locked, and how urgent things feel. We will help
+              you figure out the right next step so you are not wasting time trying to sort it out alone.
             </p>
             <div className="crew-actions">
               <a className="crew-call crew-call-large" href={`tel:${PHONE_E164}`}>
@@ -93,26 +92,6 @@ export default function HomePage() {
               <Link className="crew-secondary" href="/services">
                 Services
               </Link>
-            </div>
-          </div>
-          <div className="crew-hero-panel" aria-label="Locksmith dispatch status">
-            <div className="crew-status-top">
-              <span>Access queue</span>
-              <strong>LIVE</strong>
-            </div>
-            <div className="crew-lock-visual">
-              <div className="crew-lock-shackle" />
-              <div className="crew-lock-body">
-                <ShieldIcon />
-              </div>
-            </div>
-            <div className="crew-status-grid">
-              <span>Vehicle</span>
-              <b>Unlocked routing</b>
-              <span>Business</span>
-              <b>Access review</b>
-              <span>Keys</span>
-              <b>Cut + replace</b>
             </div>
           </div>
         </div>
@@ -139,7 +118,7 @@ export default function HomePage() {
         <div className="crew-shell">
           <div className="crew-section-head">
             <p className="crew-kicker">Main services</p>
-            <h2>Popular locksmith help</h2>
+            <h2>What we handle</h2>
           </div>
           <div className="crew-card-grid crew-card-grid-4">
             {SERVICE_PILLARS.map((page) => (
@@ -156,7 +135,7 @@ export default function HomePage() {
         <div className="crew-shell">
           <div className="crew-section-head">
             <p className="crew-kicker">Urgent calls</p>
-            <h2>Urgent locksmith help</h2>
+            <h2>When it's urgent</h2>
           </div>
           <div className="crew-chip-grid">
             {[...EMERGENCY_PAGES, ...SUPPORT_PAGES.slice(0, 10)].map((page) => (
@@ -172,12 +151,12 @@ export default function HomePage() {
         <div className="crew-shell">
           <div className="crew-section-head">
             <p className="crew-kicker">Nearby help</p>
-            <h2>City locksmith service</h2>
+            <h2>Find help near you</h2>
           </div>
           <div className="crew-city-grid">
             {UNIQUE_CITY_PAGES.slice(0, 36).map((page) => (
               <Link className="crew-city-tile" href={toPath(page.PageSlug)} key={page.PageSlug}>
-                {linkLabel(page)}
+                {cityFromTargetArea(page.TargetArea)}
               </Link>
             ))}
           </div>

@@ -8,7 +8,7 @@ import {
   SERVICE_PILLARS,
   SITE_NAME,
   UNIQUE_CITY_PAGES,
-  linkLabel,
+  cityFromTargetArea,
   pageListLabel,
   toPath,
 } from "@/lib/site-data";
@@ -23,8 +23,8 @@ export function SiteFooter() {
             <span>{SITE_NAME}</span>
           </div>
           <p>
-            Call-first locksmith routing for vehicle lockouts, emergency access, key cutting, business locks, roadside
-            lockouts, and urgent key problems across Canada.
+            Locked out of your car, home, or business? We help with entry, key cutting, fob replacement, and roadside
+            access problems across Canada.
           </p>
           <a className="crew-call" href={`tel:${PHONE_E164}`}>
             <PhoneIcon />
@@ -62,7 +62,7 @@ export function SiteFooter() {
           <nav className="crew-footer-links crew-city-list" aria-label="Footer city pages">
             {UNIQUE_CITY_PAGES.slice(0, 18).map((page) => (
               <Link href={toPath(page.PageSlug)} key={page.PageSlug}>
-                {linkLabel(page)}
+                {cityFromTargetArea(page.TargetArea)}
               </Link>
             ))}
           </nav>
